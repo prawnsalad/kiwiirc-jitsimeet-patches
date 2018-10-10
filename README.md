@@ -19,7 +19,8 @@ A few hints:
 - The Jitsi Meet packaging may have issues on Ubuntu 18.04.
 - Use an interactive shell when installing `jitsi-meet` because the packages will ask questions via debconf during installation and errors will occur if no debconf frontend is available.
 - Install `nginx` **before** `jitsi-meet` if you want the `jitsi-meet` package to automatically create an nginx site configuration for you.
-- On debian there is an issue building the dependencies at install time due to a difference in libssl packages. As a workaround, do `sudo apt-get install apt-transport-https libssl1.0-dev luarocks git && sudo luarocks install luacrypto` before trying to install the jitsi packages. `libssl1.0-dev` is needed to build luacrypto, but it will get uninstalled and replaced with `libssl-dev` due to the dependencies specified by jitsi packages later on.
+- On debian there is an issue building the dependencies at install time due to a difference in libssl packages. As a workaround, do `sudo apt-get install libssl1.0-dev luarocks && sudo luarocks install luacrypto` before trying to install the jitsi packages. `libssl1.0-dev` is needed to build luacrypto, but it will get uninstalled and replaced with `libssl-dev` due to the dependencies specified by jitsi packages later on.
+    - If you tried to install without this workaround and got build errors, see the [Troubleshooting](#troubleshooting) section below.
 
 ## Jitsi Meet configuration
 
@@ -103,6 +104,21 @@ After patching and configuring the services, you'll want to restart them so the 
 
 ```console
 sudo systemctl restart prosody.service jicofo.service jitsi-videobridge.service
+```
+
+## Troubleshooting
+
+If any errors occur while installing the Jitsi Meet packages, you may be left with broken configs or prosody modules. The most reliable remediation is to uninstall the packages and start from a clean state, using any necessary workarounds **before** any errors occur.
+
+Check these paths for any files that are left behind after uninstallation:
+
+```
+/etc/jitsi/
+/etc/nginx/sites-{available,enabled}/${JITSI_DOMAIN}.conf
+/etc/prosody/
+/usr/lib/prosody/
+/usr/share/{jicofo,jitsi-meet,jitsi-videobridge}
+/var/lib/prosody/
 ```
 
 [kiwiirc/plugin-conference]: https://github.com/kiwiirc/plugin-conference
