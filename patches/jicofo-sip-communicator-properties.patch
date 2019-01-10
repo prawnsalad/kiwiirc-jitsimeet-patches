@@ -1,0 +1,5 @@
+diff -Naru before/sip-communicator.properties after/sip-communicator.properties
+--- before/sip-communicator.properties	2018-10-05 10:38:54.113053221 -0500
++++ after/sip-communicator.properties	2018-10-05 10:39:06.252991674 -0500
+@@ -0,0 +1 @@
++org.jitsi.jicofo.DISABLE_AUTO_OWNER=True

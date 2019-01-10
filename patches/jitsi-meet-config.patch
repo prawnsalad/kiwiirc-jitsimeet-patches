@@ -1,0 +1,12 @@
+diff -u before/PLACEHOLDER_JITSI_MEET_DOMAIN-config.js after/PLACEHOLDER_JITSI_MEET_DOMAIN-config.js
+--- before/PLACEHOLDER_JITSI_MEET_DOMAIN-config.js	2018-10-09 17:48:54.943948046 +0000
++++ after/PLACEHOLDER_JITSI_MEET_DOMAIN-config.js	2018-10-09 17:49:16.953948009 +0000
+@@ -301,7 +301,7 @@
+         // through the JVB and use the peer to peer connection instead. When a
+         // 3rd participant joins the conference will be moved back to the JVB
+         // connection.
+-        enabled: true,
++        enabled: false,
+ 
+         // Use XEP-0215 to fetch STUN and TURN servers.
+         // useStunTurn: true,

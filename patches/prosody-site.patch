@@ -1,0 +1,25 @@
+diff -Naru before/PLACEHOLDER_JITSI_MEET_DOMAIN.cfg.lua after/PLACEHOLDER_JITSI_MEET_DOMAIN.cfg.lua
+--- before/PLACEHOLDER_JITSI_MEET_DOMAIN.cfg.lua	2018-10-05 10:33:15.778551374 -0500
++++ after/PLACEHOLDER_JITSI_MEET_DOMAIN.cfg.lua	2018-10-05 10:27:11.047988649 -0500
+@@ -1,6 +1,10 @@
+ -- Plugins path gets uncommented during jitsi-meet-tokens package install - that's where token plugin is located
+ plugin_paths = { "/usr/share/jitsi-meet/prosody-plugins/" }
+ 
++jitsi_meet_domain = "PLACEHOLDER_JITSI_MEET_DOMAIN";
++jitsi_meet_focus_hostname = "auth.PLACEHOLDER_JITSI_MEET_DOMAIN";
++cross_domain_bosh = true;
++
+ VirtualHost "PLACEHOLDER_JITSI_MEET_DOMAIN"
+         -- enabled = false -- Remove this line to enable this host
+         authentication = "token"
+@@ -26,8 +30,8 @@
+         c2s_require_encryption = false
+ 
+ Component "conference.PLACEHOLDER_JITSI_MEET_DOMAIN" "muc"
+-    storage = "null"
+-    modules_enabled = { "token_verification" }
++    -- storage = "null"
++    modules_enabled = { "token_verification"; "muc_role_from_jwt"; "presence_identity" }
+ admins = { "focus@auth.PLACEHOLDER_JITSI_MEET_DOMAIN" }
+ 
+ Component "jitsi-videobridge.PLACEHOLDER_JITSI_MEET_DOMAIN"
